@@ -8,7 +8,8 @@ def on_open_connection(ws):
                  "data" : {"key_id" : config.KEY_ID, "secret_key": config.SECRET_KEY}
                  }
     ws.send(json.dumps(auth_data))
-    listen_message = {"action":"listen", "data":{"streams":["T.TSLA"]}}
+    listen_message = {"action":"listen", "data":{"streams":["AM.TSLA", "AM.AAPL"]}}
+    #listen_message = {"action":"listen", "data":{"streams":["T.TSLA"]}}
     ws.send(json.dumps(listen_message))
 
 
