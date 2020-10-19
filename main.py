@@ -1,6 +1,6 @@
 import websocket, json
 import config_secret as config
-# If you're using this code from GitHub, remove/comment out the line above, and uncomment the line below.
+# If you're using this code from GitHub, remove the line above, and uncomment the line below.
 #import config
 
 def on_open_connection(ws):
@@ -10,7 +10,9 @@ def on_open_connection(ws):
                  "data" : {"key_id" : config.KEY_ID, "secret_key": config.SECRET_KEY}
                  }
     ws.send(json.dumps(auth_data))
+    # listen for Tesla and Apple stocks at once a minute
     listen_message = {"action":"listen", "data":{"streams":["AM.TSLA", "AM.AAPL"]}}
+    # listen for Tesla stock at tick level
     #listen_message = {"action":"listen", "data":{"streams":["T.TSLA"]}}
     ws.send(json.dumps(listen_message))
 
