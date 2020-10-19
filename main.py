@@ -1,5 +1,7 @@
 import websocket, json
-import config
+import config_secret as config
+# If you're using this code from GitHub, remove/comment out the line above, and uncomment the line below.
+#import config
 
 def on_open_connection(ws):
     print("Connection opened!")

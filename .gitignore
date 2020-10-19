@@ -4,6 +4,9 @@
 .idea/
 __pycache__/
 
+# don't include the file with the actual API keys in it
+config_secret.py
+
 # User-specific stuff
 .idea/**/workspace.xml
 .idea/**/tasks.xml
