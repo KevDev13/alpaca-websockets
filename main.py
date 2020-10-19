@@ -21,6 +21,8 @@ def on_message_receive(ws, message):
     print("Message:")
     print(message)
 
+    # deal with the message here, i.e. buy/sell stock, perform analysis, etc.
+
 def on_close_connection(ws):
     print("Connection closed.")
 
