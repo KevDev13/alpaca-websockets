@@ -11,17 +11,22 @@ def on_open_connection(websock):
                  }
     websock.send(json.dumps(auth_data))
     # listen for Tesla and Apple stocks at once a minute
-    listen_message = {"action":"listen", "data":{"streams":["AM.TSLA", "AM.AAPL"]}}
+    #listen_message = {"action":"listen", "data":{"streams":["AM.TSLA", "AM.AAPL"]}}
     # listen for Tesla trades
-    #listen_message = {"action":"listen", "data":{"streams":["T.TSLA"]}}
+    listen_message = {"action":"listen", "data":{"streams":["T.TSLA"]}}
     websock.send(json.dumps(listen_message))
 
 
 def on_message_receive(websock, message):
-    print("Message:")
     print(message)
 
+    # Guide for Alpaca websocket messages:
+    # https://alpaca.markets/docs/api-documentation/api-v2/market-data/streaming/
+
     # deal with the message here, i.e. buy/sell stock, perform analysis, etc.
+    trade = json.loads(message)
+    if trade["stream"] == "T.TSLA":
+        print(trade["data"]["p"])
 
 def on_close_connection(websock):
     print("Connection closed.")
