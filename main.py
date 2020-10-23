@@ -12,7 +12,7 @@ def on_open_connection(websock):
     websock.send(json.dumps(auth_data))
     # listen for Tesla and Apple stocks at once a minute
     listen_message = {"action":"listen", "data":{"streams":["AM.TSLA", "AM.AAPL"]}}
-    # listen for Tesla stock at tick level
+    # listen for Tesla trades
     #listen_message = {"action":"listen", "data":{"streams":["T.TSLA"]}}
     websock.send(json.dumps(listen_message))
 
