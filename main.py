@@ -18,13 +18,17 @@ def on_open_connection(websock):
 
 
 def on_message_receive(websock, message):
-    print(message)
+    trade = json.loads(message)
+
+    # print auth or listening messages only
+    if trade["stream"] == "authorization" or trade["stream"] == "listening":
+        print(message)
 
     # Guide for Alpaca websocket messages:
     # https://alpaca.markets/docs/api-documentation/api-v2/market-data/streaming/
 
     # deal with the message here, i.e. buy/sell stock, perform analysis, etc.
-    trade = json.loads(message)
+    
     # print price of most recent TSLA trade
     if trade["stream"] == "T.TSLA":
         print(trade["data"]["p"])
