@@ -25,6 +25,7 @@ def on_message_receive(websock, message):
 
     # deal with the message here, i.e. buy/sell stock, perform analysis, etc.
     trade = json.loads(message)
+    # print price of most recent TSLA trade
     if trade["stream"] == "T.TSLA":
         print(trade["data"]["p"])
 
